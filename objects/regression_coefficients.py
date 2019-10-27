@@ -12,6 +12,7 @@ class RegressionCoefficients(BasisFunctions):
     def __init__(self, problem: Problem):
         super().__init__(problem)
         self.values = np.zeros((problem.N + 1, problem.K)) * np.nan
+        # self.coefficients_computation = problem.coefficients_computation
 
     def compute(self, n: int, v: np.ndarray, x: np.ndarray) -> np.ndarray:
         '''
@@ -33,8 +34,11 @@ class RegressionCoefficients(BasisFunctions):
         :param basis: KxM numpy array
         :return: regression coefficients 1xK
         '''
-        model = sm.OLS(v.reshape(self.M, 1), basis.T).fit()
-        return model.params.reshape(1, self.K)
+        if True:#self.coefficients_computation == 'ols':
+            model = sm.OLS(v.reshape(self.M, 1), basis.T).fit()
+            return model.params.reshape(1, self.K)
+        # elif self.coefficients_computation == 'bayesian':
+        #     pass
 
     def plot(self) -> None:
         '''
