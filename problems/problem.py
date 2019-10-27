@@ -18,8 +18,8 @@ class Problem(DefaultFunctions):
         self.K_cus = 0
         self.U = 200
         self.u_min, self.u_max = -10, 10
-        self.optimization_type = 'extensive'  # 'gradient'
-        self.coefficients_computation =  'ols'
+        self.optimization_type = 'extensive'  # gradient
+        self.coefficients_computation = 'ols'  # ols
 
         # control problem
         self.T = 1
@@ -36,10 +36,10 @@ class Problem(DefaultFunctions):
 
         # reward function
         self.coeff_rr_c = 0
-        self.coeff_rr_x = 0
+        self.coeff_rr_x = 2
         self.coeff_rr_xx = 0
         self.coeff_rr_u = 0
-        self.coeff_rr_uu = 1
+        self.coeff_rr_uu = .1
         self.coeff_rr_xu = 0
 
         # training points
@@ -54,9 +54,9 @@ class Problem(DefaultFunctions):
 
         # bayesian regression
         self.epsilon_variance = 0.01
-        self.smoothness = 0.1
-        self.variance_growth = 0.1
-        self.max_trust = 0.1
+        self.smoothness = 100
+        self.variance_growth = 1
+        self.max_trust = 1
 
         # initialization - ignore
         self.custom_basis = np.array([])
