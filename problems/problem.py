@@ -18,7 +18,7 @@ class Problem(DefaultFunctions):
         self.K_cus = 0
         self.U = 200
         self.u_min, self.u_max = -10, 10
-        self.optimization_type = 'extensive' # 'gradient'
+        self.optimization_type = 'extensive'  # 'gradient'
 
         # control problem
         self.T = 1

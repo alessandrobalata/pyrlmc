@@ -44,7 +44,7 @@ class PolynomialBasisFunctions:
     @staticmethod
     def n_choose_k(n, k):
         '''
-
+        arrange n objects in groups of k. How many different groups can you make?
         :param n:
         :param k:
         :return:
@@ -60,7 +60,7 @@ class PolynomialBasisFunctions:
         :return:
         '''
         if n == 0:
-            return 0
+            return 1
         elif np.mod(n, 2) == 0:
             num = 2 ** (-n / 2) * math.factorial(n)
             den = math.factorial(n / 2)
@@ -102,11 +102,13 @@ class PolynomialBasisFunctions:
                 fd = self.transition_function_deterministic(n, x, u)
                 fs = self.transition_function_stochastic(n, x, u)
                 tmp = 0 * x + 0 * u
-                for d in range(degree + 1):
-                    c = self.__expectation_normal(degree - d)
-                    tmp += c * (self.n_choose_k(degree, d) *
-                                (x + fd) ** d *
-                                fs ** (degree - d))
+                if degree == 1:
+                    tmp = x + fd
+                else:
+                    for d in range(degree + 1):
+                        c = self.__expectation_normal(degree - d)
+                        tmp += (self.n_choose_k(degree, d) * (x + fd) ** d *
+                                c * fs ** (degree - d))
                 return tmp
             else:
                 return 0 * x + 0 * u + 1

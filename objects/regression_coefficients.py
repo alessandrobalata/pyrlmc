@@ -34,7 +34,7 @@ class RegressionCoefficients(BasisFunctions):
         :param basis: KxM numpy array
         :return: regression coefficients 1xK
         '''
-        if True:#self.coefficients_computation == 'ols':
+        if True:  # self.coefficients_computation == 'ols':
             model = sm.OLS(v.reshape(self.M, 1), basis.T).fit()
             return model.params.reshape(1, self.K)
         # elif self.coefficients_computation == 'bayesian':
