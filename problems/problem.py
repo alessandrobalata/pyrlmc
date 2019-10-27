@@ -1,6 +1,6 @@
 import numpy as np
 
-from objects.default_functions import DefaultFunctions
+from objects.misc.default_functions import DefaultFunctions
 
 
 class Problem(DefaultFunctions):
@@ -19,6 +19,7 @@ class Problem(DefaultFunctions):
         self.U = 200
         self.u_min, self.u_max = -10, 10
         self.optimization_type = 'extensive'  # 'gradient'
+        self.coefficients_computation =  'ols'
 
         # control problem
         self.T = 1
@@ -50,6 +51,12 @@ class Problem(DefaultFunctions):
         # gradient descent optimization
         self.step_gradient = 1
         self.epsilon_gradient = 0.0001
+
+        # bayesian regression
+        self.epsilon_variance = 0.01
+        self.smoothness = 0.1
+        self.variance_growth = 0.1
+        self.max_trust = 0.1
 
         # initialization - ignore
         self.custom_basis = np.array([])

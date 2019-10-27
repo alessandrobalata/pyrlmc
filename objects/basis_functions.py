@@ -1,5 +1,5 @@
 import numpy as np
-from objects.polynomial_basis import PolynomialBasisFunctions
+from objects.misc.polynomial_basis import PolynomialBasisFunctions
 from problems.problem import Problem
 
 

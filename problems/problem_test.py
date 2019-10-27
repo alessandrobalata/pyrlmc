@@ -1,6 +1,6 @@
 import numpy as np
 
-from objects.default_functions import DefaultFunctions
+from objects.misc.default_functions import DefaultFunctions
 
 
 class Problem(DefaultFunctions):
@@ -19,6 +19,7 @@ class Problem(DefaultFunctions):
         self.U = 200
         self.u_min, self.u_max = -10, 10
         self.optimization_type = 'extensive'  # 'gradient'
+        self.coefficients_computation = 'ols'
 
         # control problem
         self.T = 1
